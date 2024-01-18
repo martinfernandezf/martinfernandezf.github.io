@@ -1,9 +1,12 @@
 ---
 title: "First R Markdown"
 author: "Martin Fernandez Figarola"
-date: 2020-12-01T21:13:14-05:00
-categories: ["R"]
-tags: ["R Markdown", "plot", "regression"]
+date: "2020-12-01T21:13:14-05:00"
+categories: R
+tags:
+- R Markdown
+- plot
+- regression
 ---
 
 ```{r setup, include=FALSE}
@@ -12,26 +15,31 @@ knitr::opts_chunk$set(collapse = TRUE)
 
 # R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+The data give the speed of cars and the distances taken to stop. Note that the data were recorded in the 1920s.
 
-You can embed an R code chunk like this:
+Format
+A data frame with 50 observations on 2 variables.
+
+[,1]	speed	numeric	Speed (mph)
+[,2]	dist	numeric	Stopping distance (ft)
 
 ```{r cars}
 summary(cars)
 fit <- lm(dist ~ speed, data = cars)
 fit
+require(stats); require(graphics)
+plot(cars, xlab = "Speed (mph)", ylab = "Stopping distance (ft)",
+     las = 1)
+lines(lowess(cars$speed, cars$dist, f = 2/3, iter = 3), col = "red")
+title(main = "cars data")
+plot(cars, xlab = "Speed (mph)", ylab = "Stopping distance (ft)",
+     las = 1, log = "xy")
+title(main = "cars data (logarithmic scales)")
+lines(lowess(cars$speed, cars$dist, f = 2/3, iter = 3), col = "red")
+summary(fm1 <- lm(log(dist) ~ log(speed), data = cars))
+opar <- par(mfrow = c(2, 2), oma = c(0, 0, 1.1, 0),
+            mar = c(4.1, 4.1, 2.1, 1.1))
+plot(fm1)
+par(opar)
 ```
 
-# Including Plots
-
-You can also embed plots. See Figure \@ref(fig:pie) for example:
-
-```{r pie, fig.cap='A fancy pie chart.', tidy=FALSE}
-par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c('Sky', 'Sunny side of pyramid', 'Shady side of pyramid'),
-  col = c('#0292D8', '#F7EA39', '#C4B632'),
-  init.angle = -50, border = NA
-)
-```
