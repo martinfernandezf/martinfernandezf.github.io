@@ -1,0 +1,32 @@
+baseurl: "https://github.com/martinfernandezf/martinfernandezf.github.io/"
+relativeurls: true
+publishdir: "docs"
+title: "Data Science Portfolio"
+theme: "hugo-creative-portfolio-theme"
+languageCode: "en-us"
+disqusShortname: ""
+googleAnalytics: ""
+
+params:
+  copyright: "&copy;2024 Martin Fernandez Figarola"
+  description: "Portfolio showcasing my data science projects."
+  email: "you@yoursite.com"
+  navlinks:
+    - home: "yes"
+      name: "Home"
+      url: "portfolio/"
+    - name: "Projects"
+      url: "post/"
+    - name: "About"
+      url: "about/"
+  sidebarAbout:
+    - "Data Scientist passionate about solving real-world problems."
+    - ""
+  social:
+    email: "email@example.com"
+    linkedin: "https://www.linkedin.com/in/martinfernandezf/"
+    github: "https://github.com/martinfernandezf"
+    facebook: ""  # Asegúrate de definir el campo facebook, aunque sea vacío
+  # Otras configuraciones...
+
+  style: "default"
